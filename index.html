@@ -4,7 +4,11 @@
 <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
 <meta charset=utf-8 />
-<title>Wordpres URL rename</title>
+<title>JS Bin</title>
+
+<style id="jsbin-css">
+
+</style>
 </head>
 <body>
   <div class="container">
@@ -15,15 +19,21 @@
     <label for="newurl">New URL
       <input type="text" id="newurl" ng-model="newurl" class="form-control">
     </label>
+    <label for="newurl">Table prefix
+      <input type="text" value="wp_" id="table-prefix" ng-model="tablePrefix" class="form-control">
+    </label>
     <h2>MySQL wordpress DB rename</h2>
-    <textarea class="form-control" onclick="this.select()">
-UPDATE wp_options SET option_value = replace(option_value, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE option_name = 'home' OR option_name = 'siteurl';
-UPDATE wp_posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}');
-UPDATE wp_posts SET post_content = REPLACE (post_content, 'http://{{oldurl}}', 'http://{{newurl}}');
-UPDATE wp_posts SET post_content = REPLACE (post_content, 'src="http://{{oldurl}}', 'src="http://{{newurl}}');
-UPDATE wp_posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE post_type = 'attachment';
-UPDATE wp_postmeta SET meta_value = REPLACE (meta_value, 'http://{{oldurl}}','http://{{newurl}}');
+    <textarea class="form-control" onclick="this.select()" style="height: 6em;">
+UPDATE {{tablePrefix}}options SET option_value = replace(option_value, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE option_name = 'home' OR option_name = 'siteurl';
+UPDATE {{tablePrefix}}posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}');
+UPDATE {{tablePrefix}}posts SET post_content = REPLACE (post_content, 'http://{{oldurl}}', 'http://{{oldurl}}');
+UPDATE {{tablePrefix}}posts SET post_content = REPLACE (post_content, 'src="http://{{oldurl}}', 'src="http://{{newurl}}');
+UPDATE {{tablePrefix}}posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE post_type = 'attachment';
+UPDATE {{tablePrefix}}postmeta SET meta_value = REPLACE (meta_value, 'http://{{oldurl}}','http://{{newurl}}');
     </textarea>
   </div>
+<script>
+
+</script>
 </body>
 </html>
