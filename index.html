@@ -20,7 +20,7 @@
       <input type="text" id="newurl" ng-model="newurl" class="form-control">
     </label>
     <label for="newurl">Table prefix
-      <input type="text" value="wp_" id="table-prefix" ng-model="tablePrefix" class="form-control">
+      <input type="text" ng-init="tablePrefix = 'wp_'" id="table-prefix" ng-model="tablePrefix" class="form-control">
     </label>
     <h2>MySQL wordpress DB rename</h2>
     <textarea class="form-control" onclick="this.select()" style="height: 6em;">
