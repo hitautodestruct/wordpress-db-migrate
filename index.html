@@ -4,11 +4,7 @@
 <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
 <meta charset=utf-8 />
-<title>JS Bin</title>
-
-<style id="jsbin-css">
-
-</style>
+<title>Wordpress Database Migrate</title>
 </head>
 <body>
   <div class="container">
@@ -26,7 +22,7 @@
     <textarea class="form-control" onclick="this.select()" style="height: 6em;">
 UPDATE {{tablePrefix}}options SET option_value = replace(option_value, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE option_name = 'home' OR option_name = 'siteurl';
 UPDATE {{tablePrefix}}posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}');
-UPDATE {{tablePrefix}}posts SET post_content = REPLACE (post_content, 'http://{{oldurl}}', 'http://{{oldurl}}');
+UPDATE {{tablePrefix}}posts SET post_content = REPLACE (post_content, 'http://{{oldurl}}', 'http://{{newurl}}');
 UPDATE {{tablePrefix}}posts SET post_content = REPLACE (post_content, 'src="http://{{oldurl}}', 'src="http://{{newurl}}');
 UPDATE {{tablePrefix}}posts SET guid = REPLACE (guid, 'http://{{oldurl}}', 'http://{{newurl}}') WHERE post_type = 'attachment';
 UPDATE {{tablePrefix}}postmeta SET meta_value = REPLACE (meta_value, 'http://{{oldurl}}','http://{{newurl}}');
